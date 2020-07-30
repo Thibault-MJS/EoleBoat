@@ -1,0 +1,2 @@
+# EoleBoat
+ Bot Discord multifonctionnel
