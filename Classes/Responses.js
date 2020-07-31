@@ -57,6 +57,8 @@ class Responses {
             .setColor(config.colors.error)
             .setAuthor(this.message.author.tag, this.message.author.displayAvatarURL())
             .setDescription(`${config.emotes.error} Vous ne possédez pas les permissions requises.`)
-            .addField(`❯ **Permissions requises**`, permissions);
+            .addField(`❯ **Permissions requises**`, permissions.map(perm => `\`${this.perms[perm]}\``).join(', '));
     }
 }
+
+module.exports = Responses;
