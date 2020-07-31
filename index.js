@@ -34,7 +34,7 @@ var loadEvents = (dir = bot.config.dirs.events) => {
         bot.on(eventName, event.bind(null, bot));
         return eventListing.push([success, chalk.green(eventName), file]);
     });
-    return console.log(eventListing);
+    return console.log(table(eventListing));
 }
 
 /**
