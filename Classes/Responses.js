@@ -48,7 +48,7 @@ class Responses {
     }
 
     /**
-     * Envoyer une erreur de type permission
+     * Envoie une erreur de type permission
      * 
      * @param {String[]} permissions 
      */
@@ -58,6 +58,43 @@ class Responses {
             .setAuthor(this.message.author.tag, this.message.author.displayAvatarURL())
             .setDescription(`${config.emotes.error} Vous ne possédez pas les permissions requises.`)
             .addField(`❯ **Permissions requises**`, permissions.map(perm => `\`${this.perms[perm]}\``).join(', '));
+    }
+
+    /**
+     * Envoie une erreur de type permission concernant le bot
+     * 
+     * @param {String[]} permissions 
+     */
+    errorBotPerms(permissions) {
+        return new MessageEmbed()
+            .setColor(config.colors.error)
+            .setAuthor(this.message.author.tag, this.message.author.displayAvatarURL())
+            .setDescription(`${config.emotes.error} Je ne possède pas les permissions requises pour effectuer la commande.`)
+            .addField(`❯ **Permissions requises**`, permissions.map(perm => `\`${this.perms[perm]}\``).join(', '));
+    }
+
+    /**
+     * Envoie une erreur de type role
+     * 
+     * @param {String} msg 
+     */
+    noRole(msg = "Veuillez entrer la mention ou l'ID du rôle souhaité.") {
+        return new MessageEmbed()
+            .setColor(config.colors.error)
+            .setAuthor(this.message.author.tag, this.message.author.displayAvatarURL())
+            .setDescription(`${config.emotes.error} ${msg}`);
+    }
+
+    /**
+     * Envoie une erreur de type salons
+     * 
+     * @param {String} msg 
+     */
+    noChannel(msg = "Veuillez entrer la mention ou l'ID du salon souhaité.") {
+        return new MessageEmbed()
+            .setColor(config.colors.error)
+            .setAuthor(this.message.author.tag, this.message.author.displayAvatarURL())
+            .setDescription(`${config.emotes.error} ${msg}`);
     }
 }
 
