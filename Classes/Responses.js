@@ -96,6 +96,31 @@ class Responses {
             .setAuthor(this.message.author.tag, this.message.author.displayAvatarURL())
             .setDescription(`${config.emotes.error} ${msg}`);
     }
+
+    /**
+     * Envoie une erreur de type invalide
+     * 
+     * @param {String} msg 
+     */
+    invalidCommand(msg) {
+        return new MessageEmbed()
+            .setColor(config.colors.error)
+            .setAuthor(this.message.author.tag, this.message.author.displayAvatarURL())
+            .setDescription(`${config.emotes.error} Commande invalide. ${msg}`);
+    }
+
+    /**
+     * Envoie une erreur de type inconnue
+     * 
+     * @param {String} value 
+     * @param {String} details 
+     */
+    unknownValue(value, details) {
+        return new MessageEmbed()
+            .setColor(config.colors.error)
+            .setAuthor(this.message.author.tag, this.message.author.displayAvatarURL())
+            .setDescription(`${config.emotes.error} ${value}. ${details}`);
+    }
 }
 
 module.exports = Responses;
